@@ -54,12 +54,13 @@ const purchaseSchema = new mongoose.Schema({
         default:0,
         min:0
     },
-    dueAmount:{
+    changeAmount:{
         type:Number,
         default:0,
         min:0   
     },
-    changeAmount:{
+    
+    dueAmount:{
         type:Number,
         default:0,
         min:0   
