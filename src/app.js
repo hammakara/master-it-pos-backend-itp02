@@ -29,7 +29,6 @@ app.use('/api/purchases',protect,purchaseRoute)
 app.use('/api/sales',protect,saleRoute)
 app.use('/api/reports',protect,reportRoute)
 
-
 app.use(errorHandler)
 export default app
 

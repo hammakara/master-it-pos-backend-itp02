@@ -25,7 +25,6 @@ export const generateReport  = async(req ,res , next)=>{
         },{
             dueAmount:1
         })
-
         //4. monthly sales
         const startMonth = new Date(new Date().getFullYear(),new Date().getMonth(),1).setHours(0,0,0,0)
         const endMonth = new Date(new Date().getFullYear(),new Date().getMonth()+1,0).setHours(23,59,59,999)
@@ -36,8 +35,6 @@ export const generateReport  = async(req ,res , next)=>{
         const customers = await Customer.countDocuments()
         // count suppliers
         const suppliers = await Supplier.countDocuments()
-
-
         res.status(200).json({
             success:true,
             result :{
@@ -49,7 +46,23 @@ export const generateReport  = async(req ,res , next)=>{
                 totalSuppliers:suppliers
             }
         })
+
     } catch (error) {
         next(error)
+    }
+}
+
+export const report30days = async(req ,res , next)=>{
+    try{
+        
+    }catch(err){
+        next(err)
+    }
+}
+export const stockReport = async(req ,res , next)=>{
+    try{
+
+    }catch(err){
+        next(err)
     }
 }
