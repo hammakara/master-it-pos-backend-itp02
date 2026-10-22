@@ -1,6 +1,7 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import { rateLimit } from 'express-rate-limit';
+import cors from 'cors';
 import morgan from 'morgan';
 import { errorHandler } from './helpers/error-handler.js';
 import categoryRoute from './routes/category.route.js';
@@ -19,6 +20,13 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
+app.use(
+  cors({
+    origin: [process.env.FRONTEND_LOCAL_URL, process.env.FRONTEND_PRODUCTION_URL],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    credentials: true,
+  })
+);
 
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
